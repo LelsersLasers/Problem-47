@@ -13,6 +13,42 @@ const settings = {
 };
 // Don't change below this
 
+document.addEventListener("keydown", keyDownHandler, false);
+// document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("click", clickHandler, false);
+document.addEventListener("mousemove", getMousePos, false);
+
+function keyDownHandler(e) {
+    switch (e.key) {
+        case "Enter":
+            if (screen == "welcome") screen = "simulation";
+            else reset();
+            break;
+    }
+    inputMode = "key";
+}
+// function keyUpHandler(e) {
+//     switch (e.key) {
+//         case "w": case "ArrowUp": wDown = false; break;
+//         case "s": case "ArrowDown": sDown = false; break;
+//         case "a": case "ArrowLeft": aDown = false; break;
+//         case "d": case "ArrowRight": dDown = false; break;
+//         case "q": case "1": qDown = false; break;
+//         case "e": case "2": eDown = false; break;
+//         case "r": case "3": rDown = false; break;
+//     }
+// }
+function clickHandler(event) {
+    if (screen == "welcome") screen = "simulation";
+    else reset();
+}
+function getMousePos(event) {
+    var rect = canvas.getBoundingClientRect();
+    let mousePos = new Vector(event.clientX - rect.left - 6, event.clientY - rect.top - 6);
+    cursorHB = new HitBox(mousePos, 10, 10);
+}
+
+
 function drawWelcome() {
     context.textAlign = "center";
     context.fillStyle = "#ffffff";
@@ -22,7 +58,6 @@ function drawWelcome() {
     context.fillStyle = "rgba(255,255,255," + textOpacity + ")";
     context.font = 1/30 * canvas.height + "px " + font;
     context.fillText("Touch to Start", canvas.width/2, canvas.height * 1/3 + 1/15 * canvas.height);
-
     
 
     // directionsButton.draw();
@@ -55,6 +90,10 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     let value = Math.floor(Math.random() * (max - min) + min); //The max is exclusive and the min is inclusive
     return value;
+}
+
+function reset() {
+    location.reload(); // reloads the webpage
 }
 
 function drawAll() {
