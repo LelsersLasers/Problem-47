@@ -23,6 +23,28 @@ function drawWelcome() {
     context.font = 1/30 * canvas.height + "px " + font;
     context.fillText("Touch to Start", canvas.width/2, canvas.height * 1/3 + 1/15 * canvas.height);
 
+    const maxWidth = canvas.width * .50;
+    let txt = "A coin with a 2-cm diameter is dropped onto a sheet of paper ruled by parallel lines that are 3 cm apart.";
+    let line = "";
+    let txts = [];
+    let lastSpace = -1;
+    let stop = 0;
+    for (let i = 0; i < txt.length; i++) {
+        if (txt[i] == " ") lastSpace = i;
+        line += txt[i];
+        let w = context.measureText(line).width;
+        if (w > maxWidth) {
+            txts.push(txt.split("").splice(stop, lastSpace));
+            line = "";
+            stop = lastSpace;
+        }
+    }
+    context.textAlign = "left";
+    for (let i = 0; i < txts.length; i++) {
+        console.log(txts[i].join(""));
+        context.fillText(txts[i].join(""), canvas.with * .20, canvas.height * 1/3 + i * 20);
+    }
+
     // directionsButton.draw();
     // scoresButton.draw();
 }
