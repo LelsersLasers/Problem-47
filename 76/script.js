@@ -50,7 +50,7 @@ function drawWelcome() {
     context.textAlign = "center";
     context.fillStyle = "#ffffff";
     context.font = 1/15 * canvas.height + "px " + font;
-    context.fillText("Problem 78", canvas.width/2, canvas.height * 1/3);
+    context.fillText("Problem 76", canvas.width/2, canvas.height * 1/3);
 
     context.fillStyle = "rgba(255,255,255," + textOpacity + ")";
     context.font = 1/30 * canvas.height + "px " + font;
