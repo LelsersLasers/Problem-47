@@ -10,3 +10,6 @@ Baisc Info:
 - Basic settings for the game can be found at the top of 'game.js'
 - Window size does not matter, it should work on almost any sized screen
 - Because of the use of random, it might take some time before the number stablizes at the answer
+
+
+Download link: https://github.com/Lord-Lelsers/Problem-47/raw/main/Problem-47.zip
