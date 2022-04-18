@@ -1,7 +1,7 @@
 // CHANGE THESE IF WANTED
 // NOTE: keep a 2:3 ratio between coinSize and lineSpacing as described by the problem 
 const settings = {
-    "coinSize": 40, // current scale is 1px = 0.5 mm
+    "coinSize": 40,
     "lineSpacing": 60,
     "lineWidth": 0.0001,
     "lineStartOffset": true,
@@ -14,7 +14,6 @@ const settings = {
 // Don't change below this
 
 document.addEventListener("keydown", keyDownHandler, false);
-// document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("click", clickHandler, false);
 document.addEventListener("mousemove", getMousePos, false);
 
@@ -27,27 +26,15 @@ function keyDownHandler(e) {
     }
     inputMode = "key";
 }
-// function keyUpHandler(e) {
-//     switch (e.key) {
-//         case "w": case "ArrowUp": wDown = false; break;
-//         case "s": case "ArrowDown": sDown = false; break;
-//         case "a": case "ArrowLeft": aDown = false; break;
-//         case "d": case "ArrowRight": dDown = false; break;
-//         case "q": case "1": qDown = false; break;
-//         case "e": case "2": eDown = false; break;
-//         case "r": case "3": rDown = false; break;
-//     }
-// }
 function clickHandler(event) {
     if (screen == "welcome") screen = "simulation";
     else reset();
 }
 function getMousePos(event) {
     var rect = canvas.getBoundingClientRect();
-    let mousePos = new Vector(event.clientX - rect.left - 6, event.clientY - rect.top - 6);
+    let mousePos = new Point(event.clientX - rect.left - 6, event.clientY - rect.top - 6);
     cursorHB = new HitBox(mousePos, 10, 10);
 }
-
 
 function drawWelcome() {
     context.textAlign = "center";
@@ -57,11 +44,7 @@ function drawWelcome() {
 
     context.fillStyle = "rgba(255,255,255," + textOpacity + ")";
     context.font = 1/30 * canvas.height + "px " + font;
-    context.fillText("Touch to Start", canvas.width/2, canvas.height * 1/3 + 1/15 * canvas.height);
-    
-
-    // directionsButton.draw();
-    // scoresButton.draw();
+    context.fillText("Click to Start", canvas.width/2, canvas.height * 1/3 + 1/15 * canvas.height);
 }
 
 function drawSimulation() {
@@ -79,7 +62,7 @@ function drawSimulation() {
     context.font = 1/20 * canvas.height + "px " + font;
     context.fillStyle = "#ffffff";
     context.textAlign = "left";
-    context.fillText(percent + "%", 20, canvas.height/40 + 20);
+    context.fillText(percent + "%", 20, canvas.height/40 + 30);
     context.fillText(noTouching + "/" + total, 20, canvas.height/20 + 40);
 
     simFrame++;
@@ -104,8 +87,8 @@ function drawAll() {
     else if (screen == "simulation") drawSimulation();
     
 
-    if (textOpacity > 1) opacityDir = -0.04;
-    else if (textOpacity < 0) opacityDir = 0.04;
+    if (textOpacity > 1) opacityDir = -0.03;
+    else if (textOpacity < 0) opacityDir = 0.03;
     textOpacity += opacityDir;
 
     window.requestAnimationFrame(drawAll);
