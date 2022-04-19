@@ -1,6 +1,6 @@
 # Problem 47
 
-![Showcase Image]()
+![Showcase Image](https://github.com/Lord-Lelsers/Problem-47/raw/main/showcase.PNG)
 
 The problem:
 - A coin with a 2-cm diameter is dropped onto a sheet of paper ruled by parallel lines that are 3 cm apart.
