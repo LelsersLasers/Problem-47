@@ -1,5 +1,7 @@
 # Problem 47
 
+![Showcase Image]()
+
 The problem:
 - A coin with a 2-cm diameter is dropped onto a sheet of paper ruled by parallel lines that are 3 cm apart.
 
